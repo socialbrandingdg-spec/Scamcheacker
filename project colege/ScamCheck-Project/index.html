@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ScamCheck - Analyze suspicious messages, emails and links with an easy-to-understand risk score.">
+  <title>ScamCheck — Detect Suspicious Messages</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="bg-orb orb-one"></div>
+  <div class="bg-orb orb-two"></div>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="#">
+        <span class="brand-mark">✓</span>
+        <span>Scam<span>Check</span></span>
+      </a>
+      <div class="nav-right">
+        <span class="secure-pill"><span class="dot"></span> Privacy-first analysis</span>
+        <a class="github-link" href="https://github.com/" target="_blank" rel="noreferrer">GitHub ↗</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero container">
+      <div class="hero-copy">
+        <div class="eyebrow"><span>●</span> Smart scam detection</div>
+        <h1>Before you click,<br><em>check it.</em></h1>
+        <p>Paste a suspicious SMS, WhatsApp message, email, or link. ScamCheck highlights red flags and gives you a simple risk score.</p>
+        <div class="hero-points">
+          <span>✓ No account required</span>
+          <span>✓ Easy-to-understand results</span>
+          <span>✓ Works on mobile</span>
+        </div>
+      </div>
+      <div class="hero-badge">
+        <div class="shield">✓</div>
+        <div><strong>Stay one step ahead.</strong><small>Pause. Check. Then act.</small></div>
+      </div>
+    </section>
+
+    <section class="container app-grid">
+      <div class="panel analyzer-panel">
+        <div class="panel-head">
+          <div>
+            <span class="section-label">01 / Analyze</span>
+            <h2>What did you receive?</h2>
+          </div>
+          <button class="ghost-btn" id="clearBtn" type="button">Clear</button>
+        </div>
+
+        <div class="textarea-wrap">
+          <textarea id="messageInput" maxlength="5000" placeholder="Paste the suspicious message here...
+
+Example:
+Congratulations! You won ₹25,000. Claim your prize now by clicking this link..."></textarea>
+          <div class="textarea-footer">
+            <span id="charCount">0 / 5000</span>
+            <span>Text stays in your browser</span>
+          </div>
+        </div>
+
+        <div class="examples">
+          <span>Try an example:</span>
+          <button type="button" class="example-btn" data-example="Congratulations! You have won ₹25,000 cash prize. Claim your reward immediately by clicking http://claim-prize.example.com. Send your OTP to verify your bank account. Offer expires today!">Prize scam</button>
+          <button type="button" class="example-btn" data-example="Your SBI account will be blocked today. Verify your KYC immediately at https://secure-kyc.example.com or your account will be suspended.">KYC scam</button>
+          <button type="button" class="example-btn" data-example="Hey! Are you free for coffee tomorrow at 5? Please bring the project notes.">Safe message</button>
+        </div>
+
+        <button class="analyze-btn" id="analyzeBtn" type="button">
+          <span class="btn-icon">⌕</span>
+          Analyze message
+          <span class="arrow">→</span>
+        </button>
+
+        <div class="disclaimer">
+          <span>ⓘ</span>
+          ScamCheck is an educational risk indicator, not a guarantee that a message is safe or fraudulent.
+        </div>
+      </div>
+
+      <aside class="panel result-panel" id="resultPanel">
+        <div class="panel-head result-head">
+          <div>
+            <span class="section-label">02 / Result</span>
+            <h2>Your risk report</h2>
+          </div>
+          <span class="status-badge neutral" id="statusBadge">Waiting</span>
+        </div>
+
+        <div class="score-card">
+          <div class="score-ring" id="scoreRing">
+            <div class="score-inner">
+              <strong id="scoreValue">—</strong>
+              <span>risk score</span>
+            </div>
+          </div>
+          <div class="score-copy">
+            <span class="tiny-label">ASSESSMENT</span>
+            <h3 id="riskTitle">Paste a message to begin</h3>
+            <p id="riskDescription">We'll look for urgency, payment requests, suspicious links, impersonation, OTP requests and other common warning signs.</p>
+          </div>
+        </div>
+
+        <div class="result-section">
+          <div class="result-title"><span>⚠</span> Warning signs</div>
+          <div id="warningList" class="warning-list">
+            <div class="empty-state">Your detected warning signs will appear here.</div>
+          </div>
+        </div>
+
+        <div class="result-section">
+          <div class="result-title"><span>🛡</span> What you should do</div>
+          <ul id="adviceList" class="advice-list">
+            <li>Never share OTPs, passwords or PINs with someone who contacted you unexpectedly.</li>
+            <li>Verify the sender using an official website or phone number.</li>
+            <li>Do not click suspicious links before checking the destination.</li>
+          </ul>
+        </div>
+      </aside>
+    </section>
+
+    <section class="container stats-strip">
+      <div><strong>8+</strong><span>red-flag patterns</span></div>
+      <div><strong>0</strong><span>accounts required</span></div>
+      <div><strong>100%</strong><span>client-side demo</span></div>
+      <div><strong>5000</strong><span>characters supported</span></div>
+    </section>
+
+    <section class="container info-section">
+      <div class="section-intro">
+        <span class="section-label">03 / How it works</span>
+        <h2>Simple enough for everyone.</h2>
+      </div>
+      <div class="how-grid">
+        <article><span class="step">01</span><h3>Paste</h3><p>Copy the suspicious message, SMS, email or link into ScamCheck.</p></article>
+        <article><span class="step">02</span><h3>Analyze</h3><p>Our rule-based engine checks for common social-engineering patterns.</p></article>
+        <article><span class="step">03</span><h3>Act safely</h3><p>Get a clear score, reasons and practical steps before you respond.</p></article>
+      </div>
+    </section>
+
+    <section class="container history-section">
+      <div class="section-intro inline-intro">
+        <div><span class="section-label">04 / Recent checks</span><h2>Your local history</h2></div>
+        <button id="clearHistory" class="ghost-btn" type="button">Clear history</button>
+      </div>
+      <div id="historyList" class="history-list">
+        <div class="history-empty">No analyses yet. Your recent checks will appear here.</div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span>© 2026 ScamCheck</span>
+      <span>Built as a student project • Use official sources for final verification.</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
